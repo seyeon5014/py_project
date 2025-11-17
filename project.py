@@ -70,6 +70,7 @@ class project:
 
     def __value_input(self):
         self.__all = {}
+        self.__all = []
         
 
         temp = []
@@ -96,6 +97,7 @@ class project:
             bit = format(i, '04b')
             value = temp[i]
             self.__all[i] = (bit , value)
+            self.__all.append((bit,value))
             i += 1
         
         return
@@ -114,3 +116,5 @@ class project:
 
 p = project()
 p.main()
+
+
