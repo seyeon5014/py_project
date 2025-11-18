@@ -97,6 +97,29 @@ class project:
 
     def __show_group(self):
 
+        k = 0
+        while k <5:
+            print ("1의 개수별 그룹",k)
+
+            group_list = self.__group[k]
+
+
+            if len(group_list) == 0:
+                print("없음")
+
+            else:
+                t = 0
+                while t < len(group_list):
+                    idx = group_list[t]
+                    bit = format(idx,'04b')
+                    value = self.__all[idx]
+                    print(" ",bit,"(",idx,")", value)
+                    t += 1
+
+            print()
+            k += 1
+
+
         return
     
 
