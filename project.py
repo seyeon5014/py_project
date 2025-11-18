@@ -1,6 +1,6 @@
 class project:
     def __init__(self):
-        self.__all = [] #0,1를 저장할 변수
+        self.__all = {} #0,1를 저장할 변수
         self.__group = [] #0,1,2,3,4개 그룹핑 변수
         self.__change_bit = [] #000- 00-0 이런식으로 바꾼 항 저장 변수
         self.__prime_implicants = {} # 000- 와 100- 이런 식으로 숫자가 다른 값을 추출 후 선택표에 씀
@@ -70,7 +70,6 @@ class project:
 
     def __value_input(self):
         self.__all = {}
-        self.__all = []
         
 
         temp = []
@@ -97,7 +96,6 @@ class project:
             bit = format(i, '04b')
             value = temp[i]
             self.__all[i] = (bit , value)
-            self.__all.append((bit,value))
             i += 1
         
         return
