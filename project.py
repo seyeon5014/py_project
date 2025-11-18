@@ -78,18 +78,20 @@ class project:
             value = self.__all[i]
 
 
-            bit = format (i,'04b')
-
-
-            one = 0
-            j = 0
-            while j < 4:
-                if bit[j] == '1':
-                    one += 1
-                j += 1
+            if value == 1:
+                bit = format (i,'04b')
+                
+                
+                one = 0
+                j = 0
+                
+                while j < 4:
+                    if bit[j] == '1':
+                        one += 1
+                    j += 1
             
             
-            self.__group[one].append(i)
+                self.__group[one].append(i)
             i += 1
 
         return
@@ -125,9 +127,72 @@ class project:
 
     def __changing(self):
 
+        self.__change_bit = [] 
+
+        group_index = 0
+
+        while group_index < 4:
+            group1 = self.__group[group_index]
+            group2 = self.__group[group_index + 1]
+
+
+            a = 0
+            while a < len(group1):
+                idx1 = group1[a]
+                bit1 = format(idx1, '04b')
+
+                b = 0
+                while b < len(group2):
+                    idx2 = group2[b]
+                    bit2 = format(idx2 , '04b')
+
+
+                    p = 0
+                    count = 0
+                    mergin = ""
+
+
+                    while p < 4:
+                        if bit1[p] == bit2[p]:
+                            mergin = mergin + bit1[p]
+
+                        else:
+                            count += 1
+                            mergin = mergin + "-"
+                        p += 1
+
+                    if count == 1:
+                        self.__change_bit.append((mergin,[idx1,idx2]))
+
+                    b += 1
+
+                a += 1
+            
+            group_index += 1
+
+
         return
     
     def __show_changing(self):
+
+        print("1차 결과")
+
+
+        if len(self.__change_bit) == 0:
+            print("항 없음")
+            return
+        
+        t = 0
+        while t < len(self.__change_bit):
+            p,c = self.__change_bit[t]
+
+            print(" ", p , ":" , c)
+            t += 1
+        
+        
+        
+        print()
+
 
         return
     
